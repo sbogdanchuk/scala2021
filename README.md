@@ -1,4 +1,4 @@
-# scala2021
+# Scala2021
 Scala class template
 
 directory structure should be 
