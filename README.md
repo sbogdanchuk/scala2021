@@ -11,4 +11,5 @@ XX - task number
 * install [sbt](https://www.scala-sbt.org)
 * clone project
 * add main obj
+* edit build.sbt
 * sbt run
