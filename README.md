@@ -5,3 +5,10 @@ directory structure should be
 src/main/scala/scala2021/${userlogin}/taskXX
 
 XX - task number
+
+## How to
+
+* install [sbt](https://www.scala-sbt.org)
+* clone project
+* add main obj
+* > sbt run
