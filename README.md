@@ -16,4 +16,5 @@ XX - task number
   touch HW.scala
   ```
 * edit HW.scala
+* edit build.sbt change mainClass accordingly
 * sbt run
