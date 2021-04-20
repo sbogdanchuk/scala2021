@@ -15,3 +15,5 @@ XX - task number
   cd src/main/scala/scala2021/sbahdanchuk/task01
   touch HW.scala
   ```
+* edit HW.scala
+* sbt run
