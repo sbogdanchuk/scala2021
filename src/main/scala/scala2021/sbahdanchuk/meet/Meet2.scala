@@ -1,4 +1,4 @@
-package scala2021.sbahdanchuk.task01
+package scala2021.sbahdanchuk.meet
 
 import scala.util.{Failure, Success, Try}
 
