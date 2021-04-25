@@ -20,7 +20,15 @@ XX - task number
 * sbt run
 
 # run task01
+from root of the repo
 ```
 cd src\main\scala\scala2021\ashinkarev\task01
+sbt run
+```
+
+# run task02
+from root of the repo
+```
+cd src\main\scala\scala2021\ashinkarev\task02
 sbt run
 ```
