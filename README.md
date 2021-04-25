@@ -18,3 +18,9 @@ XX - task number
 * edit HW.scala
 * edit build.sbt change Compile/mainClass accordingly
 * sbt run
+
+# run task01
+```
+cd src\main\scala\scala2021\ashinkarev\task01
+sbt run
+```
