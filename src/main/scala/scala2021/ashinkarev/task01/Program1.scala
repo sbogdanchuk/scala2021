@@ -1,19 +1,19 @@
 package scala2021.ashinkarev.task01
 
 object Program1 extends App {
-  // val counts = Array(
-  //   "900,google.com",
-  //   "60,mail.yahoo.com",
-  //   "10,mobile.sports.yahoo.com",
-  //   "40,sports.yahoo.com",
-  //   "10,stackoverflow.com",
-  //   "2,en.wikipedia.org",
-  //   "1,es.wikipedia.org",
-  //   "1,mobile.sports"
-  // )
+  val counts = Array(
+    "900,google.com",
+    "60,mail.yahoo.com",
+    "10,mobile.sports.yahoo.com",
+    "40,sports.yahoo.com",
+    "10,stackoverflow.com",
+    "2,en.wikipedia.org",
+    "1,es.wikipedia.org",
+    "1,mobile.sports"
+  )
 
-  // counts
-  args
+  counts
+  // args
     .map(e => e.split(","))
     .map(toSubdomainsWithNumber)
     .flatten
