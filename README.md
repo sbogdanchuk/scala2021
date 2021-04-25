@@ -32,3 +32,10 @@ from root of the repo
 cd src\main\scala\scala2021\ashinkarev\task02
 sbt run
 ```
+
+# run task03
+from root of the repo
+```
+cd src\main\scala\scala2021\ashinkarev\task03
+sbt run
+```
