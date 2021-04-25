@@ -3,15 +3,15 @@ package scala2021.ashinkarev.task02
 import scala.annotation.tailrec
 
 object Program2 extends App {
-  // val cases = Array(
-  //   "if((2+x)*(3-y)==3)",
-  //   "Я сказал ему (это еще (не) сделано). (Но он не послушал)",
-  //   ":-)",
-  //   "())("
-  // )
+  val cases = Array(
+    "if((2+x)*(3-y)==3)",
+    "Я сказал ему (это еще (не) сделано). (Но он не послушал)",
+    ":-)",
+    "())("
+  )
 
-  // cases
-  args
+  cases
+  // args
     .foreach(e => println(s"${e} ${checkRoundBrackets(e.toList)}"))
 
   def checkRoundBrackets(symbols: List[Char]): Boolean = {
