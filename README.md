@@ -18,3 +18,24 @@ XX - task number
 * edit HW.scala
 * edit build.sbt change Compile/mainClass accordingly
 * sbt run
+
+# run task01
+from root of the repo
+```
+cd src\main\scala\scala2021\ashinkarev\task01
+sbt run
+```
+
+# run task02
+from root of the repo
+```
+cd src\main\scala\scala2021\ashinkarev\task02
+sbt run
+```
+
+# run task03
+from root of the repo
+```
+cd src\main\scala\scala2021\ashinkarev\task03
+sbt run
+```
