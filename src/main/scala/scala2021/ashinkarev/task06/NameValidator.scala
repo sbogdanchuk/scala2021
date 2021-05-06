@@ -3,7 +3,6 @@ package scala2021.ashinkarev.task06
 object NameValidator {
   var latinLetters = ('a' to 'z') ++ ('A' to 'Z');
 
-  // Найти имя менеджера департамента, в котором работает сотрудник по имени сотрудника
   def isValidName(name: String): Either[String, Boolean] = {
     if (name.isEmpty()) {
       return Right(true);
