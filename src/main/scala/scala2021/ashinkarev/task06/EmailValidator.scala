@@ -8,7 +8,7 @@ object EmailValidator {
     email match {
       case email if email.isEmpty() => Right(true)
       case email if emailRegex.findFirstMatchIn(email).isDefined => Right(true)
-      case _ => Left(s"Email is invalid.")
+      case _ => Left("Email is invalid.")
     }
   }
 }
