@@ -11,7 +11,7 @@ case class Form(
 )
 
 object FormValidator {
-  def isFormValid(form: Form): Either[String, Boolean] = {
+  def isFormValidOrError(form: Form): Either[String, Boolean] = {
     for {
       isNameValid <- NameValidator.isNameValid(form.name)
       isAgeValid <- AgeValidator.isAgeValid(form.age)

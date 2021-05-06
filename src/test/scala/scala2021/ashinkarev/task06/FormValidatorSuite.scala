@@ -9,7 +9,7 @@ import org.scalatest.prop.TableDrivenPropertyChecks
 import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
 
 class FormValidatorSuite extends AnyFunSuite with TableDrivenPropertyChecks with ScalaCheckDrivenPropertyChecks with Matchers {
-  import FormValidator.isFormValid
+  import FormValidator.isFormValidOrError
   import FormValidator.isFormValidOrAllErrors
 
   val nameErrorMessage = "Only latin letters are allowed. Those are not allowed symbols: whitespace.";
@@ -28,7 +28,7 @@ class FormValidatorSuite extends AnyFunSuite with TableDrivenPropertyChecks with
   test("check single field error cases") {
     forAll(singleErrorTestCasesTable) {
       (form, errorMessage) => {
-        isFormValid(form) should be (Left(errorMessage))
+        isFormValidOrError(form) should be (Left(errorMessage))
         isFormValidOrAllErrors(form) should be (Left(List(errorMessage)))
       }
     }
@@ -37,7 +37,7 @@ class FormValidatorSuite extends AnyFunSuite with TableDrivenPropertyChecks with
   test("all fields are incorrect => name error") {
     val form = Form("Sam Smith", 150, "b.c", Male, 99);
 
-    isFormValid(form) should be (Left(nameErrorMessage))
+    isFormValidOrError(form) should be (Left(nameErrorMessage))
     isFormValidOrAllErrors(form) should be (Left(List(
       nameErrorMessage,
       ageErrorMessage,
@@ -49,7 +49,7 @@ class FormValidatorSuite extends AnyFunSuite with TableDrivenPropertyChecks with
   test("all fields are valid => true") {
     val form = Form("Sam", 99, "a@b.c", Female, 170);
 
-    isFormValid(form) should be (Right(true))
+    isFormValidOrError(form) should be (Right(true))
     isFormValidOrAllErrors(form) should be (Right(true))
   }
 }
