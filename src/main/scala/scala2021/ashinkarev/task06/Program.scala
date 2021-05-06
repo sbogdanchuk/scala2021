@@ -4,6 +4,6 @@ case class Form(name: String, age: Int, email: String)
 
 object Program extends App {
   def isValidName(name: String): Either[String, Boolean] = {
-    return NameValidator.isValidName(name);
+    return NameValidator.isNameValid(name);
   }
 }

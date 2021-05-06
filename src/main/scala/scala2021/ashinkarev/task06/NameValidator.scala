@@ -3,7 +3,7 @@ package scala2021.ashinkarev.task06
 object NameValidator {
   var latinLetters = ('a' to 'z') ++ ('A' to 'Z');
 
-  def isValidName(name: String): Either[String, Boolean] = {
+  def isNameValid(name: String): Either[String, Boolean] = {
     if (name.isEmpty()) {
       return Right(true);
     }

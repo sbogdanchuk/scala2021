@@ -8,21 +8,21 @@ import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
 
 class NameValidatorSuite extends AnyFunSuite with TableDrivenPropertyChecks with ScalaCheckDrivenPropertyChecks with Matchers {
 
-  import NameValidator.isValidName
+  import NameValidator.isNameValid
 
   test("isValidName for empty string => true") {
-    isValidName("") should be (Right(true))
+    isNameValid("") should be (Right(true))
   }
 
   test("isValidName for non-latin letters => returns incorrect symbols") {
-    isValidName("цыц") should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: ц ы."))
-    isValidName("123") should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: 1 2 3."))
-    isValidName("abcцыцops123zz") should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: ц ы 1 2 3."))
-    isValidName("abc  a") should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: whitespace."))
-    isValidName(", ^$") should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: , whitespace ^ $$."))
+    isNameValid("цыц") should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: ц ы."))
+    isNameValid("123") should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: 1 2 3."))
+    isNameValid("abcцыцops123zz") should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: ц ы 1 2 3."))
+    isNameValid("abc  a") should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: whitespace."))
+    isNameValid(", ^$") should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: , whitespace ^ $$."))
   }
 
   test("isValidName for latin letters of any case => true") {
-    isValidName("Zzzabc") should be (Right(true))
+    isNameValid("Zzzabc") should be (Right(true))
   }
 }
