@@ -30,4 +30,8 @@ class FormValidatorSuite extends AnyFunSuite with TableDrivenPropertyChecks with
   test("isFormValid all are incorrect => name error") {
     isFormValid(Form("Sam Smith", 150, "b.c", Male, 99)) should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: whitespace."))
   }
+
+  test("isFormValid all are valid => true") {
+    isFormValid(Form("Sam", 99, "a@b.c", Female, 170)) should be (Right(true))
+  }
 }
