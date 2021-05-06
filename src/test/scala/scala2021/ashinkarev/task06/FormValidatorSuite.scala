@@ -10,28 +10,46 @@ import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
 
 class FormValidatorSuite extends AnyFunSuite with TableDrivenPropertyChecks with ScalaCheckDrivenPropertyChecks with Matchers {
   import FormValidator.isFormValid
+  import FormValidator.isFormValidOrAllErrors
 
-  test("isFormValid for incorrect name => name error") {
-    isFormValid(Form("Sam Smith", 99, "a@b.c", Female, 170)) should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: whitespace."))
+  val nameErrorMessage = "Only latin letters are allowed. Those are not allowed symbols: whitespace.";
+  val ageErrorMessage = "Only positive age that is less than 100 allowed.";
+  val emailErrorMessage = "Email is invalid.";
+  val heightErrorMessage = "Male height should be > 100.";
+
+  val singleErrorTestCasesTable = Table(
+    ("form", "errorMessage"),
+    (Form("Sam Smith", 99, "a@b.c", Female, 170), nameErrorMessage),
+    (Form("Sam", 150, "a@b.c", Female, 170), ageErrorMessage),
+    (Form("Sam", 99, "b.c", Female, 170), emailErrorMessage),
+    (Form("Sam", 99, "a@b.c", Male, 99), heightErrorMessage),
+  )
+
+  test("check single field error cases") {
+    forAll(singleErrorTestCasesTable) {
+      (form, errorMessage) => {
+        isFormValid(form) should be (Left(errorMessage))
+        isFormValidOrAllErrors(form) should be (Left(List(errorMessage)))
+      }
+    }
   }
 
-  test("isFormValid for incorrect age => age error") {
-    isFormValid(Form("Sam", 150, "a@b.c", Female, 170)) should be (Left("Only positive age that is less than 100 allowed."))
-  }
-  
-  test("isFormValid for incorrect email => email error") {
-    isFormValid(Form("Sam", 99, "b.c", Female, 170)) should be (Left("Email is invalid."))
+  test("all fields are incorrect => name error") {
+    val form = Form("Sam Smith", 150, "b.c", Male, 99);
+
+    isFormValid(form) should be (Left(nameErrorMessage))
+    isFormValidOrAllErrors(form) should be (Left(List(
+      nameErrorMessage,
+      ageErrorMessage,
+      emailErrorMessage,
+      heightErrorMessage
+    )))
   }
 
-  test("isFormValid for incorrect height => height error") {
-    isFormValid(Form("Sam", 99, "a@b.c", Male, 99)) should be (Left("Male height should be > 100."))
-  }
+  test("all fields are valid => true") {
+    val form = Form("Sam", 99, "a@b.c", Female, 170);
 
-  test("isFormValid all are incorrect => name error") {
-    isFormValid(Form("Sam Smith", 150, "b.c", Male, 99)) should be (Left(s"Only latin letters are allowed. Those are not allowed symbols: whitespace."))
-  }
-
-  test("isFormValid all are valid => true") {
-    isFormValid(Form("Sam", 99, "a@b.c", Female, 170)) should be (Right(true))
+    isFormValid(form) should be (Right(true))
+    isFormValidOrAllErrors(form) should be (Right(true))
   }
 }

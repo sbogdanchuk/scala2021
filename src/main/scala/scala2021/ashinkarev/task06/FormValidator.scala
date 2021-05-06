@@ -18,5 +18,16 @@ object FormValidator {
       isEmailValid <- EmailValidator.isEmailValid(form.email)
       isHeightValid <- HeightValidator.isHeightValid(form.sex, form.height)
     } yield isHeightValid
+  }  
+  
+  def isFormValidOrAllErrors(form: Form): Either[List[String], Boolean] = {
+    val errors = List(
+      NameValidator.isNameValid(form.name),
+      AgeValidator.isAgeValid(form.age),
+      EmailValidator.isEmailValid(form.email),
+      HeightValidator.isHeightValid(form.sex, form.height)
+    ).collect{case Left(error) => error};
+
+    return if (errors.isEmpty) Right(true) else Left(errors);
   }
 }
