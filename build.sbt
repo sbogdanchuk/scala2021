@@ -9,6 +9,8 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.7" % "test",
   "org.scalacheck" %% "scalacheck" % "1.14.1" % "test",
   "org.scalatestplus" %% "scalacheck-1-15" % "3.2.5.0" % "test",
+  "ch.qos.logback" % "logback-classic" % "1.2.3",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.3",
   "com.beachape" %% "enumeratum" % "1.6.1",
   "org.typelevel" %% "cats-core" % "2.3.0"
 )
